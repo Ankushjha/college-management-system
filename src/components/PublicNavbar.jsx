@@ -2,7 +2,8 @@ import { Menu, Button } from 'antd'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import logo from "../assets/images/logo.png"
-import RegisterModal from './pages/userManagement/registerModal'
+import RegisterModal from './pages/userManagement/RegisterModal'
+import { UserOutlined, UserAddOutlined } from '@ant-design/icons'
 
 const menuItem = [
   {
@@ -39,7 +40,15 @@ const PublicNavbar = () => {
             className='border-none'
           />
 
-          <RegisterModal>Register</RegisterModal>
+          <span className='space-x-5'>
+            <RegisterModal icon={<UserAddOutlined />}>Register</RegisterModal>
+            <Button
+              icon={<UserOutlined />}
+              onClick={() => navigate("/login")}
+            >
+              Login
+            </Button>
+          </span>
         </nav>
       </header>
     </>

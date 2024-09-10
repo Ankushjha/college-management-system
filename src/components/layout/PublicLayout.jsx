@@ -1,8 +1,10 @@
-import React from 'react'
+
 
 const PublicLayout = () => {
-  return (
-    <div>PublicLayout</div>
+  return(
+    <>
+    PublicLayout
+    </>
   )
 }
 

@@ -1,5 +1,5 @@
 import homeBackground from "../assets/images/homeBackground1.jpg"
-import RegisterModal from './pages/userManagement/registerModal'
+import RegisterModal from "./pages/userManagement/RegisterModal"
 
 //TODO
 // --- 1. Add dynamic behaviour in argument of RegisterModal
@@ -15,7 +15,6 @@ const Home = () => {
             <p>Positive behavioural support is a behaviour management system</p>
             {/* <Button type="primary" shape="round" size="large">Learn More</Button> */}
             <RegisterModal type="primary" shape="round" size="large">Learn More</RegisterModal>
-
           </div>
         </div>
       </div>

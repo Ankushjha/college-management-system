@@ -1,7 +1,21 @@
-import { Modal, Input, Form, Select, DatePicker, Button } from 'antd'
+import {  Input, Form, Select, DatePicker, Button, } from 'antd'
 import React, { useState } from 'react'
 
-const Register = ({onFinish, onCancel}) => {
+// const initialFormData = {
+//     firstname: "",
+//     lastname: "",
+//     email: "",
+//     password: "",
+//     confirmPassword: "",
+//     contactNumber: "",
+//     gender: "",
+//     dob: "",
+//     address: "",
+// }
+
+const Register = ({ onFinish, onCancel }) => {
+
+    const [form] = Form.useForm();
 
     const prefixSelector = (
         <Form.Item name="prefix" noStyle>
@@ -9,6 +23,7 @@ const Register = ({onFinish, onCancel}) => {
                 style={{
                     width: 70,
                 }}
+
             >
                 <Select.Option value="+91">+91</Select.Option>
                 <Select.Option value="+1">+1</Select.Option>
@@ -16,19 +31,25 @@ const Register = ({onFinish, onCancel}) => {
         </Form.Item>
     );
 
+    const handleFinish = (values) => {
+        onFinish(values); //these values will be passed inside onFinish that we called from RegisterModal component
+        form.resetFields() //this will reset alll fields
+    }
     return (
         <>
-            <Form labelCol={{
-                xs: { span: 24, },
-                sm: { span: 8, },
-            }}
+            <Form
+                form={form}
+                labelCol={{
+                    xs: { span: 24, },
+                    sm: { span: 8, },
+                }}
                 wrapperCol={{
                     xs: { span: 24, },
                     sm: { span: 16, },
                 }}
                 name='register'
-                onFinish={onFinish} //this will import the values in a values object
-                >
+                onFinish={handleFinish} //this will submit the form data as per provided function
+            >
 
                 <Form.Item
                     label="First Name"
@@ -41,8 +62,12 @@ const Register = ({onFinish, onCancel}) => {
                     { min: 3 }
                     ]}
                     hasFeedback
+
                 >
-                    <Input placeholder="John" />
+                    <Input
+
+                        placeholder="John"
+                    />
                 </Form.Item>
 
                 <Form.Item
@@ -57,7 +82,10 @@ const Register = ({onFinish, onCancel}) => {
                     ]}
                     hasFeedback
                 >
-                    <Input placeholder="Doe" />
+                    <Input
+
+                        placeholder="Doe"
+                    />
                 </Form.Item>
 
                 <Form.Item
@@ -76,7 +104,9 @@ const Register = ({onFinish, onCancel}) => {
                     ]}
                     hasFeedback
                 >
-                    <Input placeholder="johndoe@xyz.com" />
+                    <Input
+                        placeholder="johndoe@xyz.com"
+                    />
                 </Form.Item>
 
                 <Form.Item
@@ -90,7 +120,10 @@ const Register = ({onFinish, onCancel}) => {
                     ]}
                     hasFeedback
                 >
-                    <Input.Password placeholder="Password" />
+                    <Input.Password
+                        // value={formData.password}                        
+                        placeholder="Password"
+                    />
                 </Form.Item>
 
                 <Form.Item
@@ -110,7 +143,10 @@ const Register = ({onFinish, onCancel}) => {
                     ]}
                     hasFeedback
                 >
-                    <Input.Password placeholder="Confirm Password" />
+                    <Input.Password
+                        // value={formData.confirmPassword}                       
+                        placeholder="Confirm Password"
+                    />
                 </Form.Item>
 
                 <Form.Item
@@ -125,7 +161,12 @@ const Register = ({onFinish, onCancel}) => {
                     ]}
                     hasFeedback
                 >
-                    <Input type='number' addonBefore={prefixSelector} placeholder="Contact Number" />
+                    <Input
+                        type='number'
+                        // value={formData.contactNumber}
+                        addonBefore={prefixSelector}
+                        placeholder="Contact Number"
+                    />
                 </Form.Item>
 
                 <Form.Item
@@ -137,7 +178,10 @@ const Register = ({onFinish, onCancel}) => {
                     }]}
                     hasFeedback
                 >
-                    <Select placeholder="Select your gender">
+                    <Select
+                        // value={formData.gender}                        
+                        placeholder="Select your gender"
+                    >
                         <Select.Option value="male">Male</Select.Option>
                         <Select.Option value="female">Female</Select.Option>
                         <Select.Option value="others">Others</Select.Option>
@@ -153,7 +197,11 @@ const Register = ({onFinish, onCancel}) => {
                         message: "Please select your Date of Birth"
                     }]}
                 >
-                    <DatePicker picker='date' placeholder='Choose Date of Birth'></DatePicker>
+                    <DatePicker
+                        // value={formData.dob}                        
+                        picker='date'
+                        placeholder='Choose Date of Birth'
+                    ></DatePicker>
                 </Form.Item>
                 <Form.Item
                     name="address"
@@ -166,7 +214,10 @@ const Register = ({onFinish, onCancel}) => {
                     ]}
                     hasFeedback
                 >
-                    <Input.TextArea placeholder='Your Address' />
+                    <Input.TextArea
+                        // value={formData.address}                        
+                        placeholder='Your Address'
+                    />
                 </Form.Item>
                 <Form.Item
                     wrapperCol={{
@@ -183,6 +234,8 @@ const Register = ({onFinish, onCancel}) => {
                     <Button type="primary" htmlType="submit">Register</Button>
                 </Form.Item>
             </Form >
+
+
         </>
     )
 }

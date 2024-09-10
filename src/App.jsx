@@ -4,8 +4,8 @@ import PrivateNavbar from "./components/PrivateNavbar"
 import PublicNavbar from "./components/PublicNavbar"
 import PublicLayout from './components/layout/PublicLayout'
 import PrivateLayout from './components/layout/PrivateLayout'
-import Register from './components/pages/userManagement/Register';
-import RegisterModal from "./components/pages/userManagement/registerModal"
+import Register from "./components/pages/userManagement/Register"
+import SigninLanding from "./components/pages/userManagement/SigninLanding"
 
 function App() {
 
@@ -18,7 +18,7 @@ function App() {
           <Route path="/private-navbar" element={<PrivateNavbar />} />
           <Route path="/public-layout" element={<PublicLayout />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/register-modal" element={<RegisterModal />} />
+          <Route path="/login" element={<SigninLanding />} />
         </Route>
       </Routes>
     </>
